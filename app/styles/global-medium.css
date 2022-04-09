@@ -1,0 +1,52 @@
+h1 {
+  font-weight: 300;
+  font-size: 3rem;
+  line-height: 4.563rem;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+h5,
+h6 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.container {
+  --gutter: 40px;
+}
+
+.subtitle {
+  width: 100%;
+  font-size: 1.75em;
+  line-height: 2.625rem;
+  text-align: center;
+}
+
+.header .home-link {
+  font-size: 1.125rem;
+  margin-left: 2.875rem;
+}
+
+.header .home-link-user {
+  margin-left: 2.875rem;
+}
+
+
+.header .user-info {
+  margin-right: 2.875rem;
+}

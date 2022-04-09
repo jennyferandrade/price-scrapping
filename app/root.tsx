@@ -1,54 +1,91 @@
-import type {
-  LinksFunction,
-  LoaderFunction,
-  MetaFunction,
-} from "@remix-run/node";
-import { json } from "@remix-run/node";
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
+import { Links, LiveReload, Meta, Outlet, Scripts, useCatch, redirect } from "remix";
+import type { MetaFunction, LoaderFunction } from "remix";
 
-import tailwindStylesheetUrl from "./styles/tailwind.css";
-import { getUser } from "./session.server";
+import React from "react";
 
-export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
+export let loader: LoaderFunction = ({ request }) => {
+  let url = new URL(request.url);
+  let hostname = url.hostname;
+  let proto = request.headers.get("X-Forwarded-Proto") ?? url.protocol;
+  url.host =
+      request.headers.get("X-Forwarded-Host") ??
+      request.headers.get("host") ??
+      url.host;
+  url.protocol = "https:";
+  if (proto === "http" && hostname !== "localhost") {
+    return redirect(url.toString(), {
+      headers: {
+        "X-Forwarded-Proto": "https",
+      },
+    });
+  }
+  return {};
 };
 
-export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "Remix Notes",
-  viewport: "width=device-width,initial-scale=1",
-});
-
-type LoaderData = {
-  user: Awaited<ReturnType<typeof getUser>>;
+export let meta: MetaFunction = () => {
+  let description = `Price scraping`;
+  return {
+    viewport: "width=device-width,initial-scale=1",
+    description,
+    keywords: "scraping, price"
+  };
 };
 
-export const loader: LoaderFunction = async ({ request }) => {
-  return json<LoaderData>({
-    user: await getUser(request),
-  });
-};
+function Document({
+                    children,
+                    title,
+                  }: {
+  children: React.ReactNode;
+  title?: string;
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <Meta />
+        {title ? <title>{title}</title> : null}
+        <Links />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+        {process.env.NODE_ENV === "development" && <LiveReload />}
+      </body>
+    </html>
+  );
+}
 
 export default function App() {
   return (
-    <html lang="en" className="h-full">
-      <head>
-        <Meta />
-        <Links />
-      </head>
-      <body className="h-full">
+      <Document title="Price scraping">
         <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
+      </Document>
+  );
+}
+
+export function CatchBoundary() {
+  let caught = useCatch();
+
+  return (
+      <Document title={`${caught.status} ${caught.statusText}`}>
+        <div className="error-container">
+          <h1>
+            {caught.status} {caught.statusText}
+          </h1>
+        </div>
+      </Document>
+  );
+}
+
+export function ErrorBoundary({ error }: { error: Error }) {
+  console.error(error);
+
+  return (
+      <Document title="Uh-oh!">
+        <div className="error-container">
+          <h1>App Error</h1>
+          <pre>{error.message}</pre>
+        </div>
+      </Document>
   );
 }
