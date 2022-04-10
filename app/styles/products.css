@@ -1,0 +1,216 @@
+html, body {
+    background-color: var(--color-background);
+    color: var(--color-skill-menu-text);
+}
+
+body {
+    overflow: hidden;
+}
+
+.skills-menu {
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+}
+
+.breadcrumbs {
+    margin-top: 2rem;
+    visibility: visible;
+}
+
+.skill-section h1 {
+    background-color: var(--color-links);
+    color: var(--color-background);
+    width: 100%;
+    font-size: 1rem;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 1px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.16);
+    border-radius: 8px;
+    padding: 0.2rem 1rem;
+}
+
+.file-input {
+    padding-bottom: 1.5rem;
+    padding-left: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.file-input label {
+    min-width: 60%;
+}
+
+::-webkit-file-upload-button {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    border: 1px solid var(--color-border-input-button);
+    box-sizing: border-box;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    min-width: 8rem;
+    min-height: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 0.3rem;
+    padding: 0.5rem;
+}
+
+.skill-section .container {
+    align-items: stretch;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.skill-section .custom-email-input {
+    display: flex;
+    margin: 2rem 0 0 0;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.mobile-warning {
+    visibility: visible;
+    background: var(--color-warning);
+    padding: 0.5rem;
+}
+
+.warning {
+    background: var(--color-warning);
+    padding: 0.5rem;
+}
+
+.custom-email-form button {
+    margin-top: 1rem;
+}
+
+.tutorial-link {
+    color: var(--color-helpers);
+    background-color: var(--color-background);
+}
+
+.tutorial-link:hover {
+    color: var(--color-foreground);
+}
+
+.button {
+    background-color: var(--color-button-skills);
+}
+
+.download {
+    width: 11.5rem;
+}
+.fixed {
+    position: fixed;
+    width: 73%;
+    bottom: 0px;
+    align-content: center;
+}
+.sticky-button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section {
+    margin: 0 1rem;
+}
+
+.template-sections img{
+    margin: 0.5rem 1rem;
+}
+
+/*template generator*/
+.draggable-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.draggable-section button {
+    width: 2.8rem;
+    margin: 0 0.1rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+/*download*/
+.download-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media print, (min-width: 640px) {
+    .skill-section .container {
+        flex-direction: column;
+    }
+    .robot-main {
+        padding-bottom: 0;
+    }
+
+    .skill-section{
+        width: 100%;
+        overflow: auto;
+        margin-left: 25rem;
+        background-color: var(--color-background);
+    }
+    .skills-layout {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        height: 100%;
+        background-color: var(--color-skill-menu-background);
+    }
+
+    .skills-menu {
+        visibility: visible;
+        min-width: 25rem;
+        padding: 3em 1em;
+        background-color: var(--color-skill-menu-background);
+        position: fixed;
+        height: 100%;
+    }
+
+    .skill-link {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        text-decoration: none;
+        cursor: pointer;
+        background-color: var(--color-skill-menu-background);
+        color: var(--color-skill-menu-text);
+    }
+
+    .skill-link:hover {
+        color: var(--color-links);
+    }
+
+    .skill-link:focus {
+        outline: none;
+    }
+
+    .active {
+        color: var(--color-foreground);
+    }
+
+    .breadcrumbs {
+        visibility: hidden;
+        height: 0;
+        padding: 0;
+    }
+
+    .mobile-warning {
+        visibility: hidden;
+        height: 0;
+        padding: 0;
+    }
+
+}

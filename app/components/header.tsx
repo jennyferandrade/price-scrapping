@@ -9,7 +9,7 @@ export function Header({username}: HeaderProps) {
   return (
     <header className="header">
       <div className="header-container">
-        <Link to="/" className={username ? "home-link-user": "home-link"}>My robot skills</Link>
+        <Link to="/" className={username ? "home-link-user": "home-link"}>Price scraping</Link>
         {username ? (
           <div className="user-info">
             <span>{`Hola ${username}`}</span>
