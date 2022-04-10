@@ -77,6 +77,17 @@ export default function Nikon() {
               <Line type="monotone" dataKey="maxPrice" stroke="#82ca9d" />
               <Line type="monotone" dataKey="minPrice" stroke="#cc0000" />
           </LineChart>
+          <div>
+              <p>
+                  Actual Avg Price: € {3490}
+              </p>
+              <p>
+                  Max Avg Price: € {3490}
+              </p>
+              <p>
+                  Min Avg Price: € {1890}
+              </p>
+          </div>
       </div>
 
 
