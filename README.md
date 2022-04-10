@@ -1,6 +1,4 @@
-# Robot Skills
-
-- [Remix Docs](https://remix.run/docs)
+# Price scrapping
 
 ## Development
 
